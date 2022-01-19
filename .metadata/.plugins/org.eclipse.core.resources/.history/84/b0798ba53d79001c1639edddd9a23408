@@ -1,0 +1,49 @@
+package ques2;
+import java.util.Scanner;
+public class Application {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter D.O.B(DD-MM-YYYY): ");
+		String[] dateOfBirth = sc.nextLine().split("-");
+		Date date = new Date(Integer.parseInt(dateOfBirth[0]),Integer.parseInt(dateOfBirth[1]),Integer.parseInt(dateOfBirth[2]));
+		
+		System.out.println("Enter Name: ");
+		String name = sc.nextLine();
+		
+		System.out.println("Enter NIC: ");
+		String nic = sc.nextLine();
+		
+		Owner owner = new Owner(name,date,nic);
+		
+		System.out.println("Enter balance: ");
+		float balance = sc.nextFloat();
+		
+		System.out.println("Enter Number:");
+		String accNumber = sc.next();
+		
+		Account account;
+		
+		System.out.println("Select account type: \n1. Savings \n2. Current");
+		int choice = sc.nextInt();
+		switch(choice) {
+		case 1:
+			account = new SavingAccount(owner, balance, accNumber, 40);
+			break;
+		case 2:
+			account = new CurrentAccount(owner, balance, accNumber, 8800);
+			break;
+		default:
+			account = new SavingAccount();
+			account.print();
+			System.out.println("Invalid input!");
+		}
+		
+		
+	}
+
+
+	}
+
+
